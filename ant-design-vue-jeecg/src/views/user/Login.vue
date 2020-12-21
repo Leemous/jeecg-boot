@@ -112,7 +112,6 @@
       @success="stepCaptchaSuccess"
       @cancel="stepCaptchaCancel"></two-step-captcha>
     <login-select-tenant ref="loginSelect" @success="loginSelectOk"></login-select-tenant>
-    <third-login ref="thirdLogin"></third-login>
   </div>
 </template>
 
@@ -128,13 +127,11 @@
   import { encryption , getEncryptedString } from '@/utils/encryption/aesEncrypt'
   import store from '@/store/'
   import { USER_INFO } from "@/store/mutation-types"
-  import ThirdLogin from './third/ThirdLogin'
   import LoginSelectTenant from "./LoginSelectTenant";
   export default {
     components: {
       LoginSelectTenant,
-      TwoStepCaptcha,
-      ThirdLogin
+      TwoStepCaptcha
     },
     data () {
       return {
