@@ -246,12 +246,6 @@
 			<artifactId>aliyun-sdk-oss</artifactId>
 			<version>${aliyun.oss.version}</version>
 		</dependency>
-		<!-- 第三方登录  -->
-		<dependency>
-			<groupId>com.xkcoding.justauth</groupId>
-			<artifactId>justauth-spring-boot-starter</artifactId>
-			<version>${justauth-spring-boot-starter.version}</version>
-		</dependency>
 	</dependencies>
 
 </project>
