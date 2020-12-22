@@ -1,6 +1,6 @@
 -- 创建mysql库
-DROP DATABASE IF EXISTS `jeecg-boot`;
-create database `jeecg-boot` default character set utf8mb4 collate utf8mb4_general_ci;
+DROP DATABASE IF EXISTS `dev_mediation_platform`;
+create database `dev_mediation_platform` default character set utf8mb4 collate utf8mb4_general_ci;
 
 
 /*
@@ -10,7 +10,6 @@ create database `jeecg-boot` default character set utf8mb4 collate utf8mb4_gener
  Source Server Type    : MySQL
  Source Server Version : 50727
  Source Host           : 127.0.0.1:3306
- Source Schema         : jeecg-boot-os-re
 
  Target Server Type    : MySQL
  Target Server Version : 50727
@@ -21,7 +20,7 @@ create database `jeecg-boot` default character set utf8mb4 collate utf8mb4_gener
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
-USE `jeecg-boot`;
+USE `dev_mediation_platform`;
 
 -- ----------------------------
 -- Table structure for ces_field_kongj
