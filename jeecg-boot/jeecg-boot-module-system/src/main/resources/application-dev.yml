@@ -232,7 +232,7 @@ jeecg :
       data-type: yml
   #分布式锁配置
   redisson:
-    address: 127.0.0.1:6379
+    address: 59.110.112.15:6379
     password:
     type: STANDALONE
     enabled: true
