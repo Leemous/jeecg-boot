@@ -22,8 +22,6 @@
         <fastjson.version>1.2.75</fastjson.version>
 		<knife4j-spring-boot-starter.version>2.0.4</knife4j-spring-boot-starter.version>
 		<knife4j-spring-ui.version>2.0.4</knife4j-spring-ui.version>
-		<postgresql.version>42.2.6</postgresql.version>
-		<ojdbc6.version>11.2.0.3</ojdbc6.version>
 		<sqljdbc4.version>4.0</sqljdbc4.version>
 		<mysql-connector-java.version>8.0.21</mysql-connector-java.version>
 		<dynamic-datasource-spring-boot-starter.version>3.2.0</dynamic-datasource-spring-boot-starter.version>
