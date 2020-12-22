@@ -13,5 +13,11 @@
     <artifactId>mediation-cloud-platform</artifactId>
     <version>1.0.0</version>
 
-
+    <dependencies>
+        <!-- 引入jeecg-boot-starter-cloud依赖-->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-starter-cloud</artifactId>
+        </dependency>
+    </dependencies>
 </project>
