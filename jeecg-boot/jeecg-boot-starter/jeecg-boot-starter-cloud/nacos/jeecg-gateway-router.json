@@ -20,19 +20,16 @@
   "filters": [],
   "uri": "lb://jeecg-system"
 }, {
-  "id": "jeecg-demo",
+  "id": "mediation",
   "order": 1,
   "predicates": [{
     "name": "Path",
     "args": {
-      "_genkey_0": "/mock/**",
-      "_genkey_1": "/test/**",
-      "_genkey_2": "/bigscreen/template1/**",
-      "_genkey_3": "/bigscreen/template2/**"
+      "_genkey_0": "/mediation/**"
     }
   }],
   "filters": [],
-  "uri": "lb://jeecg-demo"
+  "uri": "lb://mediation"
 }, {
   "id": "jeecg-system-websocket",
   "order": 2,
@@ -47,7 +44,7 @@
   "filters": [],
   "uri": "lb:ws://jeecg-system"
 }, {
-  "id": "jeecg-demo-websocket",
+  "id": "mediation-websocket",
   "order": 3,
   "predicates": [{
     "name": "Path",
@@ -56,5 +53,5 @@
     }
   }],
   "filters": [],
-  "uri": "lb:ws://jeecg-demo"
+  "uri": "lb:ws://mediation"
 }]

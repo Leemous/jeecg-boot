@@ -17,10 +17,10 @@ spring:
             allowedHeaders: "*"
       #如果启用nacos或者数据库配置请删除一下配置
       routes:
-        - id: jeecg-demo
-          uri: lb://jeecg-demo
+        - id: mediation
+          uri: lb://mediation
           predicates:
-            - Path=/mock/**,/test/**,/bigscreen/template1/**,/bigscreen/template2/**
+            - Path=/mediation/**
         - id: jeecg-system
           uri: lb://jeecg-system
           predicates:
@@ -29,8 +29,8 @@ spring:
           uri: lb:ws://jeecg-system
           predicates:
             - Path=/websocket/**,/eoaSocket/**,/newsWebsocket/**
-        - id: jeecg-demo-websocket
-          uri: lb:ws://jeecg-demo
+        - id: mediation-websocket
+          uri: lb:ws://mediation
           predicates:
             - Path=/vxeSocket/**
       # 全局熔断降级配置
