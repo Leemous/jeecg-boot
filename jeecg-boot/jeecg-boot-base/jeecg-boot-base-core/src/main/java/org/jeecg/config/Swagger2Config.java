@@ -2,18 +2,20 @@ package org.jeecg.config;
 
 
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
+import com.google.common.base.Function;
+import com.google.common.base.Optional;
+import com.google.common.base.Predicate;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.constant.CommonConstant;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
+import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -39,6 +41,8 @@ import java.util.List;
 @ConditionalOnProperty(name = "swagger.enable", havingValue = "true")
 public class Swagger2Config implements WebMvcConfigurer {
 
+    private static final String PACKAGE_SPLITOR = ",";
+
     /**
      *
      * 显示swagger-ui.html文档展示页，还必须注入swagger资源：
@@ -62,9 +66,9 @@ public class Swagger2Config implements WebMvcConfigurer {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                //此包路径下的类，才生成接口文档
-                .apis(RequestHandlerSelectors.basePackage("org.jeecg"))
-                //加了ApiOperation注解的类，才生成接口文档
+                // 此包路径下的类才生成接口文档，多个包使用指定分隔符隔开
+                .apis(basePackage("org.jeecg" + PACKAGE_SPLITOR + "com.mediation"))
+                // 加了ApiOperation注解的类，才生成接口文档
                 .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
@@ -104,16 +108,11 @@ public class Swagger2Config implements WebMvcConfigurer {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 // //大标题
-                .title("Jeecg-Boot 后台服务API接口文档")
+                .title("后台服务API接口文档")
                 // 版本号
                 .version("1.0")
-//				.termsOfServiceUrl("NO terms of service")
                 // 描述
                 .description("后台API接口")
-                // 作者
-                .contact("JEECG团队")
-                .license("The Apache License, Version 2.0")
-                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
                 .build();
     }
 
@@ -137,4 +136,29 @@ public class Swagger2Config implements WebMvcConfigurer {
                 Collections.singleton(new SecurityReference(CommonConstant.X_ACCESS_TOKEN, authorizationScopes)));
     }
 
+    /**
+     * 自定义扫描包
+     * @param basePackage
+     * @return
+     */
+    public static Predicate<RequestHandler> basePackage(final String basePackage) {
+        return input -> declaringClass(input).transform(handlerPackage(basePackage)).or(true);
+    }
+
+    private static Function<Class<?>, Boolean> handlerPackage(final String basePackage) {
+        return input -> {
+            // 循环判断匹配
+            for (String strPackage : basePackage.split(PACKAGE_SPLITOR)) {
+                boolean isMatch = input.getPackage().getName().startsWith(strPackage);
+                if (isMatch) {
+                    return true;
+                }
+            }
+            return false;
+        };
+    }
+
+    private static Optional<? extends Class<?>> declaringClass(RequestHandler input) {
+        return Optional.fromNullable(input.declaringClass());
+    }
 }
