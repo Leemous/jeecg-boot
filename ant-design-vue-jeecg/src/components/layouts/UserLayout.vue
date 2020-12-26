@@ -19,7 +19,7 @@
           <a href="https://github.com/zhangdaiscott/jeecg-boot/blob/master/LICENSE" target="_blank">条款</a>
         </div>
         <div class="copyright">
-          Copyright &copy; 2019 调解平台
+          Copyright &copy; 2020 调解平台
         </div>
       </div>
     </div>

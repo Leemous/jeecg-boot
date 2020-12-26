@@ -3,7 +3,7 @@
     <div class="copyright">
       Copyright
       <a-icon type="copyright"/>
-      2019 <span>调解平台</span>
+      2020 <span>调解平台</span>
     </div>
   </div>
 </template>
