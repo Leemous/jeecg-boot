@@ -227,10 +227,6 @@
 </script>
 
 <style scoped>
-  /* update--begin--autor:lvdandan-----date:20201016------for：j-image-upload图片组件单张图片详情回显空白
-  * https://github.com/zhangdaiscott/jeecg-boot/issues/1810
-  * https://github.com/zhangdaiscott/jeecg-boot/issues/1779
-  */
   /deep/ .imgupload .ant-upload-select{display:block}
   /deep/ .imgupload .ant-upload.ant-upload-select-picture-card{ width:120px;height: 120px;}
   /deep/ .imgupload .iconp{padding:32px;}
