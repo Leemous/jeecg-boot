@@ -17,9 +17,6 @@
         :type="collapsed ? 'menu-unfold' : 'menu-fold'"
         @click="toggle"/>
 
-      <span v-if="device === 'desktop'">欢迎进入调解平台</span>
-      <span v-else>调解平台</span>
-
       <user-menu :theme="theme"/>
     </div>
     <!-- 顶部导航栏模式 -->
